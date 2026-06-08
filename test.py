@@ -12,6 +12,15 @@
 # print(response.content)
 
 import backend.query.result as result
-import json
-answer = result.ask("what is software engineering?")
-print(json.dumps(answer, indent=4))
+import backend.query.memory as memory
+
+history=[]
+while True:
+    prompt = input("prompt > ")
+    if prompt=="exit" or prompt=="quit":
+        print("\n bye!")
+        break;
+    ques = memory.get_standalone_question(prompt, history)
+    ans = result.ask(ques)
+    history = memory.update_history(ques, ans["answer"], history)
+    print(f"""\n {ans["answer"]} \n""")
