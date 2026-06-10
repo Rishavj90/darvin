@@ -1,12 +1,12 @@
 # extract raw text + page numbers from PDF
 
-import fitz
+import pymupdf
 from pathlib import Path
 
 def parse_pdf(path):
     try:
         arr = []
-        with fitz.open(path) as doc:
+        with pymupdf.open(path) as doc:
             for i in range(len(doc)):
                 text = doc[i].get_text()
                 if text.strip() :

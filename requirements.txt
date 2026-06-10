@@ -6,3 +6,5 @@ langchain-text-splitters
 langchain-groq
 sentence-transformers
 chromadb
+fastapi[standard]
+python-multipart
